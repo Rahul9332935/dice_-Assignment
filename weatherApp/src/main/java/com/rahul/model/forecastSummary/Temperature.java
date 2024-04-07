@@ -1,4 +1,4 @@
-package com.rahul.model;
+package com.rahul.model.forecastSummary;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

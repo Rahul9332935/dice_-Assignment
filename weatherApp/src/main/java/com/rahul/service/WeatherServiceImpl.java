@@ -6,14 +6,17 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
-import com.rahul.model.WeatherForecast;
+import com.rahul.model.forecastSummary.HourlyWeather;
+import com.rahul.model.forecastSummary.WeatherForecast;
+import com.rahul.model.hourlyForecast.WeatherData;
 @Service
 public class WeatherServiceImpl implements WeatherService {
 
     @Value("${X-RapidAPI-Key}")
     private String apiKey;
 //    "738e943283msha9df0c0bc496552p1b1c1ajsn0d92c4b15f5e";
-    
+    @Value("${weather.apiKey}")
+    private String weatherApiKey;
     
     private final String apiHost = "forecast9.p.rapidapi.com";
     
@@ -36,6 +39,17 @@ public class WeatherServiceImpl implements WeatherService {
             // Handle error response
             return null;
         }
+    }
+
+
+	@Override
+	public WeatherData RapidApiGetHourlyForecastByLocationName(String location) {
+        String apiUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + location + "&appid=" + weatherApiKey;
+        
+        System.out.println(apiUrl);
+        WeatherData response = restTemplate.getForObject(apiUrl, WeatherData.class);
+        System.out.println(response);
+        return response;
     }
 }
 
