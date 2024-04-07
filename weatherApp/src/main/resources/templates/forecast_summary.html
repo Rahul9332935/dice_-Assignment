@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forecast Summary</title>
+    <style>
+        .table-container {
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        @media only screen and (max-width: 600px) {
+            th, td {
+                padding: 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Forecast Summary for <span th:text="${weatherForecast.location.name}"></span></h1>
+    <div class="table-container">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Date & Time</th>
+                    <th>Temperature (°C)</th>
+                    <th>Wind Speed (km/h)</th>
+                    <th>Wind Direction</th>
+                    <th>Sunrise</th>
+                    <th>Sunset</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="item : ${weatherForecast.forecast.items}">
+                    <td th:text="${item.dateWithTimezone}"></td>
+                    <td th:text="${item.temperature.max}"></td>
+                    <td th:text="${item.wind.max} + ' ' + ${item.wind.unit}"></td>
+                    <td th:text="${item.wind.direction}"></td>
+                    <td th:text="${item.astronomy.sunrise}"></td>
+                    <td th:text="${item.astronomy.sunset}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

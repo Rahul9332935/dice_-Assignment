@@ -25,7 +25,7 @@ public class WeatherServiceImpl implements WeatherService {
 
 
     public WeatherForecast rapidApiGetForecastSummaryByLocationName(String location) {
-    	System.out.println(apiKey);
+//    	System.out.println(apiKey);
     	String apiUrl = "https://forecast9.p.rapidapi.com/rapidapi/forecast/"+location+"/summary/";
         HttpHeaders headers = new HttpHeaders();
         headers.set("X-RapidAPI-Key", apiKey);
@@ -36,7 +36,6 @@ public class WeatherServiceImpl implements WeatherService {
         if (response.getStatusCode() == HttpStatus.OK) {
             return response.getBody();
         } else {
-            // Handle error response
             return null;
         }
     }

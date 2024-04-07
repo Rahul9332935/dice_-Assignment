@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hourly Forecast</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        @media only screen and (max-width: 600px) {
+            th, td {
+                padding: 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Hourly Forecast for <span th:text="${weatherData.city.name}"></span></h1>
+    <div style="overflow-x:auto;">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Date & Time</th>
+                    <th>Temperature (°C)</th>
+                    <th>Pressure (hPa)</th>
+                    <th>Humidity (%)</th>
+                    <th>Weather Description</th>
+                    <th>Wind Speed (km/h)</th>
+                    <th>Wind Direction</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="forecastItem : ${weatherData.list}">
+                    <td th:text="${forecastItem.dt_txt}"></td>
+                    <td th:text="${forecastItem.main.temp}"></td>
+                    <td th:text="${forecastItem.main.pressure}"></td>
+                    <td th:text="${forecastItem.main.humidity}"></td>
+                    <td th:text="${forecastItem.weather[0].description}"></td>
+                    <td th:text="${forecastItem.wind.speed}"></td>
+                    <td th:text="${forecastItem.wind.deg}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
