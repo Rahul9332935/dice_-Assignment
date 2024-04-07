@@ -5,6 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hourly Forecast</title>
     <style>
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .return-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .return-button:hover {
+            background-color: #0056b3;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -25,7 +41,10 @@
     </style>
 </head>
 <body>
-    <h1>Hourly Forecast for <span th:text="${weatherData.city.name}"></span></h1>
+    <div class="container">
+        <h1>Hourly Forecast for <span th:text="${weatherData.city.name}"></span></h1>
+        <a href="/" class="return-button">Return to Homepage</a>
+    </div>
     <div style="overflow-x:auto;">
         <table border="1">
             <thead>
@@ -54,3 +73,4 @@
     </div>
 </body>
 </html>
+

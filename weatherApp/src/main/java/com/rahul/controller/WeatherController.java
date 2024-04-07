@@ -16,12 +16,14 @@ import com.rahul.service.WeatherService;
 
 //@RestController
 @Controller
-@RequestMapping("/weather")
 public class WeatherController {
 	
 	@Autowired
 	private WeatherService ws;
-	
+	@GetMapping
+	public String homePage(Model model) {
+		return "homepage";
+	}
 //	@GetMapping("/summary/{location}")
 //	public ResponseEntity<WeatherForecast> getForecastSummaryByLocationName(@PathVariable String location) {
 //	
@@ -31,7 +33,7 @@ public class WeatherController {
 //		}
 //		return new ResponseEntity<>(forcast, HttpStatus.OK);
 //	}
-	@GetMapping("/summary/{location}")
+	@GetMapping("/weather/summary/{location}")
     public String getForecastSummaryByLocationName(@PathVariable String location, Model model) {
         WeatherForecast weatherForecast = ws.rapidApiGetForecastSummaryByLocationName(location);
         if (weatherForecast == null) {
@@ -48,7 +50,7 @@ public class WeatherController {
 //		}
 //		return new ResponseEntity<>(resp, HttpStatus.OK);
 //	}
-	@GetMapping("/hourly/{location}")
+	@GetMapping("/weather/hourly/{location}")
     public String getHourlyForecastByLocationName(@PathVariable String location, Model model) {
         WeatherData weatherData = ws.RapidApiGetHourlyForecastByLocationName(location);
         if (weatherData == null) {

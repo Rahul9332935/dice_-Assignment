@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .endpoint-info {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .endpoint-info h2 {
+            margin-top: 0;
+            color: #dc3545;
+        }
+
+        .endpoint-info p {
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Weather Forecast App</h1>
+
+        <div class="section">
+            <div class="endpoint-info">
+                <h2>Get Forecast Summary by Location</h2>
+                <p>This endpoint provides a summary of the weather forecast for a specific location.</p>
+                <p>Click below to view the forecast summary:</p>
+                <a th:href="@{/weather/summary/Patna}" class="btn">View Forecast Summary</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="endpoint-info">
+                <h2>Get Hourly Forecast by Location</h2>
+                <p>This endpoint provides hourly weather forecasts for a specific location.</p>
+                <p>Click below to view the hourly forecast:</p>
+                <a th:href="@{/weather/hourly/Patna}" class="btn">View Hourly Forecast</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

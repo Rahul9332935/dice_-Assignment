@@ -44,10 +44,7 @@ public class WeatherServiceImpl implements WeatherService {
 	@Override
 	public WeatherData RapidApiGetHourlyForecastByLocationName(String location) {
         String apiUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + location + "&appid=" + weatherApiKey;
-        
-        System.out.println(apiUrl);
         WeatherData response = restTemplate.getForObject(apiUrl, WeatherData.class);
-        System.out.println(response);
         return response;
     }
 }
