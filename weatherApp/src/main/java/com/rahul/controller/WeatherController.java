@@ -30,13 +30,8 @@ public class WeatherController {
 	
 	
 	@GetMapping("/summary/{location}")
-    public ResponseEntity<?> getForecastSummaryByLocationName(
-            @RequestHeader("X-Client-ID") String clientId,
-            @RequestHeader("X-Client-Secret") String clientSecret,
-            @PathVariable String location) {
+    public ResponseEntity<?> getForecastSummaryByLocationName(@PathVariable String location) {
         
-        
-
         try {
             WeatherForecast forecast = weatherService.rapidApiGetForecastSummaryByLocationName(location);
             if (forecast != null) {
@@ -56,14 +51,8 @@ public class WeatherController {
     }
 
     @GetMapping("/hourly/{location}")
-    public ResponseEntity<?> getHourlyForecastByLocationName(
-            @RequestHeader("X-Client-ID") String clientId,
-            @RequestHeader("X-Client-Secret") String clientSecret,
-            @PathVariable String location) {
-        
-//        if (!isValidCredentials(clientId, clientSecret)) {
-//            return new ResponseEntity<>("Invalid credentials", HttpStatus.UNAUTHORIZED);
-//        }
+    public ResponseEntity<?> getHourlyForecastByLocationName( @PathVariable String location) {
+       
 
         try {
             WeatherData resp = weatherService.RapidApiGetHourlyForecastByLocationName(location);
@@ -82,10 +71,5 @@ public class WeatherController {
             return new ResponseEntity<>("Unexpected error: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-	
-	private boolean isValidCredentials(String clientId, String clientSecret) {
-        return clientId.equals(this.clientId) && clientSecret.equals(this.clientSecret);
-    }
-
 	
 }
