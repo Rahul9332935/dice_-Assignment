@@ -28,6 +28,15 @@ These instructions will get you a copy of the project up and running on your loc
    - ```X-RapidAPI-Host=forecast9.p.rapidapi.com ```
 
 
+## How to Access the Application
+
+To access the weather forecasts, you need to pass the following headers with your requests:
+
+- **X-Client-ID**: user
+- **X-Client-Secret**: user
+
+These headers are required for authentication purposes. Without these headers, you will not be able to access the weather forecasts.
+
 4. Run the application:
 
    You can run the application directly from your IDE.
