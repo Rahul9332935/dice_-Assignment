@@ -12,6 +12,58 @@ These instructions will get you a copy of the project up and running on your loc
 - Maven
 - IDE (e.g., IntelliJ IDEA, Eclipse)
 
+## API Endpoints
+
+The API endpoints provide weather forecasts in JSON format. They require authentication using a client ID and client secret passed in the request headers.
+
+### Summary Endpoint
+
+- **URL:** `/weather/summary/{location}`
+- **Method:** `GET`
+- **Description:** Retrieves a summary of weather forecast for a specific location.
+- **Request Headers:**
+  - `X-Client-ID`: Your client ID
+  - `X-Client-Secret`: Your client secret
+- **Response:**
+  - Status Code 200 OK: Returns the weather forecast data in JSON format.
+  - Status Code 401 Unauthorized: If the provided credentials are invalid.
+  - Status Code 404 Not Found: If the forecast data for the specified location is not found.
+
+### Hourly Endpoint
+
+- **URL:** `/weather/hourly/{location}`
+- **Method:** `GET`
+- **Description:** Retrieves hourly weather forecast for a specific location.
+- **Request Headers:**
+  - `X-Client-ID`: user
+  - `X-Client-Secret`: user
+- **Response:**
+  - Status Code 200 OK: Returns the hourly weather forecast data in JSON format.
+  - Status Code 401 Unauthorized: If the provided credentials are invalid.
+  - Status Code 404 Not Found: If the forecast data for the specified location is not found.
+
+## UI Endpoints
+
+The UI endpoints provide user-friendly interfaces to view weather forecasts.
+
+### Summary UI Endpoint
+
+- **URL:** `/ui/weather/summary/{location}`
+- **Method:** `GET`
+- **Description:** Displays a summary of weather forecast for a specific location.
+- **Response:** Renders a web page with the weather forecast summary.
+
+### Hourly UI Endpoint
+
+- **URL:** `/ui/weather/hourly/{location}`
+- **Method:** `GET`
+- **Description:** Displays hourly weather forecast for a specific location.
+- **Response:** Renders a web page with the hourly weather forecast.
+
+## Authentication
+
+The API endpoints require authentication using a client ID and client secret provided in the request headers. Please ensure to include the appropriate headers when making requests to the API endpoints.
+
 ### Installing
 
 1. Clone the repository:
@@ -23,9 +75,13 @@ These instructions will get you a copy of the project up and running on your loc
 
    - Open the `application.properties` file located in the `src/main/resources` directory.
    - Replace the placeholder values with your actual API keys:
-   - ```X-RapidAPI-Key=738e943283msha9dfc0bc496552p1b1c1ajsn0d92c4b15f5e ```
-   - ``` weather.apiKey=59a12c019546f4ec2825de768f692dc ```
-   - ```X-RapidAPI-Host=forecast9.p.rapidapi.com ```
+   - `spring.application.name`: Name of the application.
+   - `X-RapidAPI-Key`: [API key for accessing the weather data service](https://rapidapi.com/wettercom-wettercom-default/api/forecast9).
+   - `weather.apiKey`: [API key for accessing weather data](https://openweathermap.org/forecast5#geo5).
+   - `X-RapidAPI-Host : forecast9.p.rapidapi.com`
+   - `server.port : 8084`.
+   - `auth.clientId: user`
+   - `auth.clientSecret : user`
 
 
 ## How to Access the Application
@@ -45,14 +101,6 @@ These headers are required for authentication purposes. Without these headers, y
 5. Access the application:
 
    Once the application is running, you can access it at [http://localhost:8084](http://localhost:8084) in your web browser.
-
-## Endpoints
-
-The application provides the following REST endpoints:
-
-- `/` : For Homepage.
-- `/weather/summary/{location}`: Retrieves the forecast summary for a specific location.
-- `/weather/hourly/{location}`: Retrieves hourly forecasts for a specific location.
 
 
 ## Built With
