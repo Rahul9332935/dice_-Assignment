@@ -35,9 +35,7 @@ public class WeatherController {
             @RequestHeader("X-Client-Secret") String clientSecret,
             @PathVariable String location) {
         
-        if (!isValidCredentials(clientId, clientSecret)) {
-            return new ResponseEntity<>("Invalid credentials", HttpStatus.UNAUTHORIZED);
-        }
+        
 
         try {
             WeatherForecast forecast = weatherService.rapidApiGetForecastSummaryByLocationName(location);
@@ -63,9 +61,9 @@ public class WeatherController {
             @RequestHeader("X-Client-Secret") String clientSecret,
             @PathVariable String location) {
         
-        if (!isValidCredentials(clientId, clientSecret)) {
-            return new ResponseEntity<>("Invalid credentials", HttpStatus.UNAUTHORIZED);
-        }
+//        if (!isValidCredentials(clientId, clientSecret)) {
+//            return new ResponseEntity<>("Invalid credentials", HttpStatus.UNAUTHORIZED);
+//        }
 
         try {
             WeatherData resp = weatherService.RapidApiGetHourlyForecastByLocationName(location);
